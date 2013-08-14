@@ -20,9 +20,9 @@ Here a screencast of Radio Malaya on Vimeo : https://vimeo.com/72316897
 
 *How to use ?
 ===========
-1.  $ wget -c https://raw.github.com/RobbiNespu/RadioMalaya/master/RadioMalaya.shL
-2.	$ chmod +x RadioMalaya.sh
-3.	$  ./RadioMalaya.sh
+$ wget -c https://raw.github.com/RobbiNespu/RadioMalaya/master/RadioMalaya.shL
+$ chmod +x RadioMalaya.sh
+$ ./RadioMalaya.sh
 
 *License
 ========
