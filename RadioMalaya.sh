@@ -35,6 +35,7 @@ MalaysiaKlasik="rtmp://stream.rtm.swiftserve.com/live/rtm/rtm-ch010"
 Hot="http://2353.live.streamtheworld.com/HOTFM?type=.flv"
 Gomo="http://72.20.10.50:8000"
 RC="http://72.20.10.40:8000"
+DungunFM="http://192.241.121.163:8006"
 
 # Check the mplayer and dialog existence
 PLAYER=$(which mplayer 2> /dev/null)
@@ -65,7 +66,8 @@ chooseRadio=$($DIALOG --stdout --title "Radio Malaya" --radiolist "Please choose
 "Malaysia Klasik Nasional FM" "" OFF \
 "Hot FM" "" OFF \
 "Gomo FM" "" OFF \
-"Rileks Community Online Radio" "" OFF)
+"Rileks Community Online Radio" "" OFF \
+"Dungun FM" "" OFF)
 
 clear
 
@@ -105,7 +107,10 @@ case $chooseRadio in
         "$PLAYER" 2>/dev/null "$Gomo" ;;
     "Rileks Community Online Radio")
         printf "\nPlaying ${txtcyn}Rileks Community Online Radio${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$RC" ;;        
+        "$PLAYER" 2>/dev/null "$RC" ;;
+    "Dungun FM")
+        printf "\nPlaying ${txtcyn}Dungun FM${txtrst} from your computer...\n"
+        "$PLAYER" 2>/dev/null "$DungunFM" ;;        
     *)
 		echo Oppss.. Please select ${txtylw} radio channel${txtrst} To play!
 		;;
