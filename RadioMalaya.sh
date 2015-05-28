@@ -37,6 +37,7 @@ Gomo="http://72.20.10.50:8000"
 RC="http://72.20.10.40:8000"
 DungunFM="http://192.241.121.163:8006"
 LambatTinggal="http://www.lambattinggal.fm:8000"
+Bapakku="http://radio.bapakku.fm:8000"
 
 # Check the mplayer and dialog existence
 PLAYER=$(which mplayer 2> /dev/null)
@@ -69,7 +70,8 @@ chooseRadio=$($DIALOG --stdout --title "Radio Malaya" --radiolist "Please choose
 "Gomo FM" "" OFF \
 "Rileks Community Online Radio" "" OFF \
 "Dungun FM" "" OFF \
-"Lambat Tinggal FM" "" OFF)
+"Lambat Tinggal FM" "" OFF \
+"Bapakku FM" "" OFF)
 
 clear
 
@@ -115,7 +117,10 @@ case $chooseRadio in
         "$PLAYER" 2>/dev/null "$DungunFM" ;;
     "Lambat Tinggal FM")
         printf "\nPlaying ${txtcyn}Lambat Tinggal FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$LambatTinggal" ;;        
+        "$PLAYER" 2>/dev/null "$LambatTinggal" ;;
+    "Bapakku FM")
+        printf "\nPlaying sas${txtcyn}Bapakku FM${txtrst} from your computer...\n"
+        "$PLAYER" 2>/dev/null "$Bapakku" ;;        
     *)
 		echo Oppss.. Please select ${txtylw} radio channel${txtrst} To play!
 		;;
