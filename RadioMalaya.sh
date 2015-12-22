@@ -38,11 +38,12 @@ RC="http://72.20.10.40:8000"
 DungunFM="http://192.241.121.163:8006"
 LambatTinggal="http://www.lambattinggal.fm:8000"
 Bapakku="http://radio.bapakku.fm:8000"
+KampungChat="http://72.20.10.33:8000"
 
 # Check the mplayer and dialog existence
 PLAYER=$(which mplayer 2> /dev/null)
 if [ -z "$PLAYER" ]; then
-    printf "Opps..Sorry, player application not found on your system!\nPlease intall ${txtylw}mplayer${txtrst} and try run this script again, TQ."
+    printf "Opps..Sorry, mplayer application not found on your system!\nPlease intall ${txtylw}mplayer${txtrst} and try run this script again, TQ."
     exit 1
 fi
 
@@ -61,6 +62,7 @@ chooseRadio=$($DIALOG --stdout --title "Radio Malaya" --radiolist "Please choose
 "Muzik FM" "" OFF \
 "Ikim FM" "" OFF \
 "Nasyid FM" "" OFF \
+"KampungChat FM" "" OFF \
 "Express Tamil Online" "" OFF \
 "Fuh FM" "" OFF \
 "Cyber Fly FM" "" OFF \
@@ -88,6 +90,9 @@ case $chooseRadio in
     "Nasyid FM")
         printf "\nPlaying ${txtcyn}Nasyid FM${txtrst} from your computer...\n"
         "$PLAYER" 2>/dev/null "$Nasyid" ;;
+    "KampungChat FM")
+        printf "\nPlaying ${txtcyn}KampungChat FM${txtrst} from your computer...\n"
+        "$PLAYER" 2>/dev/null "$KampungChat" ;;
     "Express Tamil Online")
         printf "\nPlaying ${txtcyn}Express Tamil Online${txtrst} from your computer...\n"
         "$PLAYER" 2>/dev/null "$ExpressTamil" ;;
