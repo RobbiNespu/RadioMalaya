@@ -23,7 +23,7 @@ txtylw=$(tput setaf 3) 	# Yellow
 txtcyn=$(tput setaf 6) 	# Cyan
 
 # Malaysia radio streaming database
-Terengganu="http://tfmlive.dyndns.org:8000"
+Terengganu="http://218.208.228.62:8000"
 Muzik="http://69.197.60.122:8000"
 Ikim="http://50.7.96.210:8285"
 Nasyid="http://radio.nasyidfm.com.my:8000"
