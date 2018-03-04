@@ -26,10 +26,11 @@ Here a screencast of Radio Malaya on Vimeo : https://vimeo.com/72316897
 
 *How to use ?
 ===========
+```
 $ wget -c https://raw.github.com/RobbiNespu/RadioMalaya/master/RadioMalaya.sh
 $ chmod +x RadioMalaya.sh
 $ ./RadioMalaya.sh
-
+```
 *License
 ========
 This program is free software; you can redistribute it and/or modify
