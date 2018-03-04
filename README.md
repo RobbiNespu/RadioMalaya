@@ -3,22 +3,22 @@
 Hi, i made a bash script by using mplayer and dialog to produce TUI (text user interface) streaming radio channel in Malaysia. I called it as "Radio Malaya". The idea for this tool comes when i was bored and miss so much of my hometown radio (Terengganu FM). So here we are.. Radio Malaya :)
 This tool allow you to listen several radio cast that i found on internet, which is :
 
-~~Terengganu FM~~
-Muzik FM
-IKIM FM
-Nasyid FM
-Express Tamil Online
-Fuh FM
-Cyberfly FM
-Karya FM
-Klasik Nasional
-Hot FM
-Gomo FM
-Rileks Community Online Radio 
-Dungun FM
-Lambat tinggal FM
-Bapakku FM
-KampungChat FM
+- ~~Terengganu FM~~
+- Muzik FM
+- IKIM FM
+- Nasyid FM
+- Express Tamil Online
+- Fuh FM
+- Cyberfly FM
+- Karya FM
+- Klasik Nasional
+- Hot FM
+- Gomo FM
+- Rileks Community Online Radio 
+- Dungun FM
+- Lambat tinggal FM
+- Bapakku FM
+- KampungChat FM
 
 Thus script are available at my github account ;)
 
