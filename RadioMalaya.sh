@@ -80,6 +80,9 @@ chooseRadio=$($DIALOG --stdout --title "Radio Malaya" --radiolist "Please choose
 clear
 
 case $chooseRadio in
+	"UTHM FM")
+        printf "\nPlaying ${txtcyn}UTHM FM${txtrst} from your computer...\n"
+        "$PLAYER" 2>/dev/null "$Uthm" ;;
     "Terengganu FM")
         printf "\nPlaying ${txtcyn}Terengganu FM${txtrst} from your computer...\n"
         "$PLAYER" 2>/dev/null "$Terengganu" ;;
@@ -127,10 +130,7 @@ case $chooseRadio in
         "$PLAYER" 2>/dev/null "$LambatTinggal" ;;
     "Bapakku FM")
         printf "\nPlaying ${txtcyn}Bapakku FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$Bapakku" ;;
-    "UTHM FM")
-        printf "\nPlaying ${txtcyn}UTHM FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$Uthm" ;;         
+        "$PLAYER" 2>/dev/null "$Bapakku" ;;         
     *)
 		echo Oppss.. Please select ${txtylw} radio channel${txtrst} To play!
 		;;
