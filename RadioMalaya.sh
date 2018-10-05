@@ -23,6 +23,7 @@ txtylw=$(tput setaf 3) 	# Yellow
 txtcyn=$(tput setaf 6) 	# Cyan
 
 # Malaysia radio streaming database
+Uthm="http://radio.uthm.edu.my:8000/live.mp3"
 Terengganu="http://218.208.228.62:8000"
 Muzik="http://69.197.60.122:8000"
 Ikim="http://50.7.96.210:8285"
@@ -58,7 +59,8 @@ killall 2> /dev/null "$PLAYER"
 
 # List of Malaysia local radio
 chooseRadio=$($DIALOG --stdout --title "Radio Malaya" --radiolist "Please choose your radio channel :" 0 0 0  \
-"Terengganu FM" "" ON \
+"UTHM FM" "" ON \
+"Terengganu FM" "" OFF \
 "Muzik FM" "" OFF \
 "Ikim FM" "" OFF \
 "Nasyid FM" "" OFF \
@@ -124,8 +126,11 @@ case $chooseRadio in
         printf "\nPlaying ${txtcyn}Lambat Tinggal FM${txtrst} from your computer...\n"
         "$PLAYER" 2>/dev/null "$LambatTinggal" ;;
     "Bapakku FM")
-        printf "\nPlaying sas${txtcyn}Bapakku FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$Bapakku" ;;        
+        printf "\nPlaying ${txtcyn}Bapakku FM${txtrst} from your computer...\n"
+        "$PLAYER" 2>/dev/null "$Bapakku" ;;
+    "UTHM FM")
+        printf "\nPlaying ${txtcyn}UTHM FM${txtrst} from your computer...\n"
+        "$PLAYER" 2>/dev/null "$Uthm" ;;         
     *)
 		echo Oppss.. Please select ${txtylw} radio channel${txtrst} To play!
 		;;
