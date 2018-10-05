@@ -136,4 +136,5 @@ case $chooseRadio in
 		;;
 esac
 echo Thanks for using ${txtcyn}Radio Malaya${txtrst} for listening Malaysian radio stream!
+kill -9 $(ps aux | grep 'usr/bin' | grep mplayer | grep -v grep | awk '{print $2}')
 exit 0
