@@ -18,12 +18,12 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
 
-# Color text
+# Text color
 txtrst=$(tput sgr0) 	# Reset
 txtylw=$(tput setaf 3) 	# Yellow
 txtcyn=$(tput setaf 6) 	# Cyan
 
-# Malaysia radio streaming database
+# Streaming Malaysian radio station database
 Uthm="http://radio.uthm.edu.my:8000/live.mp3"
 Terengganu="http://218.208.228.62:8000"
 Muzik="http://69.197.60.122:8000"
@@ -44,6 +44,7 @@ KampungChat="http://72.20.10.33:8000"
 
 # Return path to provided program name if present, or exit application with
 # message.
+#
 # Inputs: Program_Name
 # Output: Program_Path
 function retrieve_program_path() {
@@ -51,7 +52,7 @@ function retrieve_program_path() {
     program_path=$(which ${program_name} 2>/dev/null)
 
     if [ -z "${program_path}" ]; then
-        printf "Oops..Sorry, ${program_name} application not found on your system!\nPlease install ${txtylw}${program_name}${txtrst} and try run this script again, TQ."
+        printf "Oops..Sorry, the ${program_name} application cannot be found on your system!\nPlease install ${txtylw}${program_name}${txtrst} and try to run this script again, TQ."
         exit 1
     fi
 
@@ -64,7 +65,7 @@ function retrieve_desired_station() {
     dialog=${1}
 
     echo $(${dialog} --stdout --title "Radio Malaya" \
-        --radiolist "Please choose your radio channel :" 0 0 0  \
+        --radiolist "Please choose your desired radio channel :" 0 0 0  \
             "UTHM FM" "" ON \
             "Terengganu FM" "" OFF \
             "Muzik FM" "" OFF \
@@ -108,7 +109,7 @@ function retrieve_station_uri() {
         "Dungun FM") echo ${DungunFM} ;;
         "Lambat Tinggal FM") echo ${LambatTinggal} ;;
         "Bapakku FM") echo ${Bapakku} ;;
-        *) echo "Oops.. Please select ${txtylw}radio channel${txtrst} To play!" >&2 \
+        *) echo "Oops.. You must select a ${txtylw}radio channel${txtrst} to play!" >&2 \
            && return -1 ;;
     esac
 }
@@ -129,7 +130,7 @@ function gracefully_exit() {
     player_pid=${1}
 
     pkill -9 -g $(ps -o pgid ${player_pid} | tail -1) && sleep 1
-    echo "Thanks for using ${txtcyn}Radio Malaya${txtrst} for listening Malaysian radio stream!"
+    echo "Thanks for using ${txtcyn}Radio Malaya${txtrst} to listen to a Malaysian radio stream!"
     exit 0
 }
 
@@ -139,7 +140,7 @@ function main_program_loop() {
     dialog=$(retrieve_program_path dialog)
     chosen_station=$(retrieve_desired_station ${dialog})
 
-    printf "\nPlayer ${txtcyn}${chosen_station}${txtrst} from your computer...\n"
+    printf "\nNow playing ${txtcyn}${chosen_station}${txtrst} on your computer...\n"
     launch_player_in_background ${player} "${chosen_station}"
     trap "gracefully_exit $! 2>/dev/null" SIGTERM SIGINT
     printf "Enjoy the music; <Ctrl-C> to exit.\n\n"
