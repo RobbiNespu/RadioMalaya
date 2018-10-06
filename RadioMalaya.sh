@@ -44,7 +44,6 @@ KampungChat="http://72.20.10.33:8000"
 
 # Return path to provided program name if present, or exit application with
 # message.
-#
 # Inputs: Program_Name
 # Output: Program_Path
 function retrieve_program_path() {
