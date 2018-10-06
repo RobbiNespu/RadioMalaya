@@ -82,59 +82,68 @@ clear
 case $chooseRadio in
 	"UTHM FM")
         printf "\nPlaying ${txtcyn}UTHM FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$Uthm" ;;
+        "$PLAYER" 2>/dev/null "$Uthm" & ;;
     "Terengganu FM")
         printf "\nPlaying ${txtcyn}Terengganu FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$Terengganu" ;;
+        "$PLAYER" 2>/dev/null "$Terengganu" & ;;
     "Muzik FM")
         printf "\nPlaying ${txtcyn}Muzik FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$Muzik" ;;
+        "$PLAYER" 2>/dev/null "$Muzik" & ;;
     "Ikim FM")
         printf "\nPlaying ${txtcyn}IKIM FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$Ikim" ;;
+        "$PLAYER" 2>/dev/null "$Ikim" & ;;
     "Nasyid FM")
         printf "\nPlaying ${txtcyn}Nasyid FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$Nasyid" ;;
+        "$PLAYER" 2>/dev/null "$Nasyid" & ;;
     "KampungChat FM")
         printf "\nPlaying ${txtcyn}KampungChat FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$KampungChat" ;;
+        "$PLAYER" 2>/dev/null "$KampungChat" & ;;
     "Express Tamil Online")
         printf "\nPlaying ${txtcyn}Express Tamil Online${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$ExpressTamil" ;;
+        "$PLAYER" 2>/dev/null "$ExpressTamil" & ;;
     "Fuh FM")
         printf "\nPlaying ${txtcyn}Fuh FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$Fuh" ;;
+        "$PLAYER" 2>/dev/null "$Fuh" & ;;
     "Cyber Fly FM")
         printf "\nPlaying ${txtcyn}Cyber Fly FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$CyberFly" ;;
+        "$PLAYER" 2>/dev/null "$CyberFly" & ;;
      "Karya FM")
         printf "\nPlaying ${txtcyn}Karya FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$Karya" ;;
+        "$PLAYER" 2>/dev/null "$Karya" & ;;
     "Malaysia Klasik Nasional FM")
         printf "\nPlaying ${txtcyn}Malaysia Klasik Nasional FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$MalaysiaKlasik" ;;
+        "$PLAYER" 2>/dev/null "$MalaysiaKlasik" & ;;
     "Hot FM")
         printf "\nPlaying ${txtcyn}Hot FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$Hot" ;;
+        "$PLAYER" 2>/dev/null "$Hot" & ;;
     "Gomo FM")
         printf "\nPlaying ${txtcyn}Gomo FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$Gomo" ;;
+        "$PLAYER" 2>/dev/null "$Gomo" & ;;
     "Rileks Community Online Radio")
         printf "\nPlaying ${txtcyn}Rileks Community Online Radio${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$RC" ;;
+        "$PLAYER" 2>/dev/null "$RC" & ;;
     "Dungun FM")
         printf "\nPlaying ${txtcyn}Dungun FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$DungunFM" ;;
+        "$PLAYER" 2>/dev/null "$DungunFM" & ;;
     "Lambat Tinggal FM")
         printf "\nPlaying ${txtcyn}Lambat Tinggal FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$LambatTinggal" ;;
+        "$PLAYER" 2>/dev/null "$LambatTinggal" & ;;
     "Bapakku FM")
         printf "\nPlaying ${txtcyn}Bapakku FM${txtrst} from your computer...\n"
-        "$PLAYER" 2>/dev/null "$Bapakku" ;;         
+        "$PLAYER" 2>/dev/null "$Bapakku" & ;;
     *)
 		echo Oppss.. Please select ${txtylw} radio channel${txtrst} To play!
 		;;
 esac
-echo Thanks for using ${txtcyn}Radio Malaya${txtrst} for listening Malaysian radio stream!
-kill -9 $(ps aux | grep 'usr/bin' | grep mplayer | grep -v grep | awk '{print $2}')
-exit 0
+
+# Grab PID of player and then trap SIGTERM/SIGINT to kill related process tree.
+trap "gracefully_quit $!" SIGTERM SIGINT
+function gracefully_quit() {
+    parent_group_id=$(ps -o pgid ${1} | tail -1)
+    pkill -9 -g ${parent_group_id}
+    echo Thanks for using ${txtcyn}Radio Malaya${txtrst} for listening Malaysian radio stream!
+    exit 0
+}
+
+# Keep script running forever. SIGTERM/SIGINT will over-ride this.
+while true; do true; done
